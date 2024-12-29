@@ -4,11 +4,15 @@ import react from "@astrojs/react";
 import remarkToc from "remark-toc";
 import remarkCollapse from "remark-collapse";
 import sitemap from "@astrojs/sitemap";
-import { SITE } from "./src/config";
+import { LOCALE, SITE } from "./src/config";
 
 // https://astro.build/config
 export default defineConfig({
   site: SITE.website,
+  i18n: {
+    locales: [...LOCALE.locales], // spread operator is used because LOCALE.locales is readonly
+    defaultLocale: LOCALE.defaultLocale,
+  },
   integrations: [
     tailwind({
       applyBaseStyles: false,
