@@ -1,0 +1,43 @@
+export interface I18nStrings {
+  about: string;
+  socialLinks: string;
+  home: string;
+  posts: string;
+  "posts.desc": string;
+  tag: string;
+  "tag.desc": string;
+  tags: string;
+  "tags.desc": string;
+  archives: string;
+  "archives.desc": string;
+  featured: string;
+  recentPosts: string;
+  tableOfContents: string;
+  "tableOfContents.desc": string;
+  allPosts: string;
+  search: string;
+  "search.desc": string;
+  "search.placeholder": string;
+  pages: string;
+  page: string;
+  goBack: string;
+  goBackHome: string;
+  pageNotFound: string;
+  "footer.text": string;
+  "date.published": string;
+  "date.updated": string;
+  "date.month.january": string;
+  "date.month.february": string;
+  "date.month.march": string;
+  "date.month.april": string;
+  "date.month.may": string;
+  "date.month.june": string;
+  "date.month.july": string;
+  "date.month.august": string;
+  "date.month.september": string;
+  "date.month.october": string;
+  "date.month.november": string;
+  "date.month.december": string;
+}
+
+export type I18nKeys = keyof I18nStrings;
