@@ -1,5 +1,10 @@
 ---
+import type { I18nStrings } from "@i18n/types";
+import { LOCALE } from "@config";
+import { translateFor } from "@i18n/utils";
 import getRelativePath from "@utils/getRelativePath";
+
+const t = translateFor(Astro.currentLocale || LOCALE.defaultLocale);
 
 const pathname = Astro.url.pathname.slice(import.meta.env.BASE_URL.length);
 
@@ -10,28 +15,38 @@ const currentUrlPath = pathname.replace(/\/+$/, "");
 // eg: /tags/tailwindcss => ['tags', 'tailwindcss']
 const breadcrumbList = currentUrlPath.split("/").slice(1);
 
+if (breadcrumbList[0] !== "posts")
+  breadcrumbList[0] = t(breadcrumbList[0] as keyof I18nStrings);
+
 // if breadcrumb is Home > Posts > 1 <etc>
 // replace Posts with Posts (page number)
 breadcrumbList[0] === "posts" &&
-  breadcrumbList.splice(0, 2, `Posts (page ${breadcrumbList[1] || 1})`);
+  breadcrumbList.splice(
+    0,
+    2,
+    `${t("posts")} (${t("page")} ${breadcrumbList[1] || 1})`
+  );
 
 // if breadcrumb is Home > Tags > [tag] > [page] <etc>
 // replace [tag] > [page] with [tag] (page number)
-breadcrumbList[0] === "tags" &&
+if (breadcrumbList[0] === "tags") {
   !isNaN(Number(breadcrumbList[2])) &&
-  breadcrumbList.splice(
-    1,
-    3,
-    `${breadcrumbList[1]} ${
-      Number(breadcrumbList[2]) === 1 ? "" : "(page " + breadcrumbList[2] + ")"
-    }`
-  );
+    breadcrumbList.splice(
+      1,
+      3,
+      `${breadcrumbList[1]} ${
+        Number(breadcrumbList[2]) === 1
+          ? ""
+          : `(${t("page")} ` + breadcrumbList[2] + ")"
+      }`
+    );
+}
 ---
 
 <nav class="breadcrumb" aria-label="breadcrumb">
   <ul>
     <li>
-      <a href={getRelativePath("/")}>Home</a>
+      <a href={getRelativePath("/")}>{t("home")}</a>
       <span aria-hidden="true">&raquo;</span>
     </li>
     {
