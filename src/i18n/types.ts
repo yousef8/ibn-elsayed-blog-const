@@ -38,6 +38,7 @@ export interface I18nStrings {
   "date.month.october": string;
   "date.month.november": string;
   "date.month.december": string;
+  "a11y.skipToContent": string;
 }
 
 export type I18nKeys = keyof I18nStrings;

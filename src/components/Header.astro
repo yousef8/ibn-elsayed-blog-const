@@ -1,18 +1,21 @@
 ---
-import { LOGO_IMAGE, SITE } from "@config";
+import { LOCALE, LOGO_IMAGE, SITE } from "@config";
 import Hr from "./Hr.astro";
 import LinkButton from "./LinkButton.astro";
 import getRelativePath from "@utils/getRelativePath";
+import { translateFor } from "@i18n/utils";
 
 export interface Props {
   activeNav?: "posts" | "archives" | "tags" | "about" | "search";
 }
 
+const t = translateFor(Astro.currentLocale || LOCALE.defaultLocale);
+
 const { activeNav } = Astro.props;
 ---
 
 <header>
-  <a id="skip-to-content" href="#main-content">Skip to content</a>
+  <a id="skip-to-content" href="#main-content">{t("a11y.skipToContent")}</a>
   <div class="nav-container">
     <div class="top-nav-wrap">
       <a href={getRelativePath("/")} class="logo whitespace-nowrap">
@@ -63,7 +66,7 @@ const { activeNav } = Astro.props;
               href={getRelativePath("/posts/")}
               class={activeNav === "posts" ? "active" : ""}
             >
-              Posts
+              {t("posts")}
             </a>
           </li>
           <li>
@@ -71,7 +74,7 @@ const { activeNav } = Astro.props;
               href={getRelativePath("/tags/")}
               class={activeNav === "tags" ? "active" : ""}
             >
-              Tags
+              {t("tags")}
             </a>
           </li>
           <li>
@@ -79,7 +82,7 @@ const { activeNav } = Astro.props;
               href={getRelativePath("/about/")}
               class={activeNav === "about" ? "active" : ""}
             >
-              About
+              {t("about")}
             </a>
           </li>
           {
@@ -111,7 +114,7 @@ const { activeNav } = Astro.props;
                       activeNav === "archives" && "active",
                     ]}
                   >
-                    Archives
+                    {t("archives")}
                   </span>
                 </LinkButton>
               </li>
@@ -133,7 +136,7 @@ const { activeNav } = Astro.props;
                   d="M19.023 16.977a35.13 35.13 0 0 1-1.367-1.384c-.372-.378-.596-.653-.596-.653l-2.8-1.337A6.962 6.962 0 0 0 16 9c0-3.859-3.14-7-7-7S2 5.141 2 9s3.14 7 7 7c1.763 0 3.37-.66 4.603-1.739l1.337 2.8s.275.224.653.596c.387.363.896.854 1.384 1.367l1.358 1.392.604.646 2.121-2.121-.646-.604c-.379-.372-.885-.866-1.391-1.36zM9 14c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5z"
                 ></path>
               </svg>
-              <span class="sr-only">Search</span>
+              <span class="sr-only">{t("search")}</span>
             </LinkButton>
           </li>
           {
