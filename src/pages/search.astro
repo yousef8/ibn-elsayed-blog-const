@@ -1,12 +1,13 @@
 ---
 import { getCollection } from "astro:content";
-import { SITE } from "@config";
+import { LOCALE, SITE } from "@config";
 import Layout from "@layouts/Layout.astro";
 import Main from "@layouts/Main.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import SearchBar from "@components/Search";
 import getSortedPosts from "@utils/getSortedPosts";
+import { translateFor } from "@i18n/utils";
 
 // Retrieve all published articles
 const posts = await getCollection("blog", ({ data }) => !data.draft);
@@ -19,12 +20,18 @@ const searchList = sortedPosts.map(({ data, slug }) => ({
   data,
   slug,
 }));
+
+const t = translateFor(Astro.currentLocale || LOCALE.defaultLocale);
 ---
 
-<Layout title={`Search | ${SITE.title}`}>
+<Layout title={`${t("search")} | ${SITE.title}`}>
   <Header activeNav="search" />
-  <Main pageTitle="Search" pageDesc="Search any article ...">
-    <SearchBar client:load searchList={searchList} />
+  <Main pageTitle={t("search")} pageDesc={`${t("search.desc")} ...`}>
+    <SearchBar
+      client:load
+      searchList={searchList}
+      currentLocale={Astro.currentLocale || LOCALE.defaultLocale}
+    />
   </Main>
   <Footer />
 </Layout>
