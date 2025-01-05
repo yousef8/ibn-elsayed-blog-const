@@ -40,6 +40,7 @@ const englishLocale: I18nStrings = {
   "date.month.october": "October",
   "date.month.november": "November",
   "date.month.december": "December",
+  "a11y.skipToContent": "Skip to content",
 };
 
 export default englishLocale;
