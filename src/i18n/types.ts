@@ -23,6 +23,7 @@ export interface I18nStrings {
   goBack: string;
   goBackHome: string;
   pageNotFound: string;
+  rssFeed: string;
   "footer.text": string;
   "date.published": string;
   "date.updated": string;

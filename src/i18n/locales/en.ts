@@ -25,6 +25,7 @@ const englishLocale: I18nStrings = {
   goBack: "Go back",
   goBackHome: "Go back home",
   pageNotFound: "Page Not Found",
+  rssFeed: "RSS Feed",
   "footer.text": "Copyright © {year} | All rights reserved",
   "date.published": "Published",
   "date.updated": "Updated",

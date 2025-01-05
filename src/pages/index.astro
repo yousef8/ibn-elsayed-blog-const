@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import { LOCALE, SITE, SOCIALS } from "@config";
 import Layout from "@layouts/Layout.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
@@ -8,10 +9,11 @@ import Hr from "@components/Hr.astro";
 import Card from "@components/Card";
 import Socials from "@components/Socials.astro";
 import getSortedPosts from "@utils/getSortedPosts";
-import { SITE, SOCIALS } from "@config";
 import getRelativePath from "@utils/getRelativePath";
+import { translateFor } from "@i18n/utils";
 
 const posts = await getCollection("blog");
+const t = translateFor(Astro.currentLocale || LOCALE.defaultLocale);
 
 const sortedPosts = getSortedPosts(posts);
 const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
@@ -39,7 +41,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
             d="M12 20.001h2C14 14.486 9.514 10 4 10v2c4.411 0 8 3.589 8 8.001z"
           ></path><circle cx="6" cy="18" r="2"></circle>
         </svg>
-        <span class="sr-only">RSS Feed</span>
+        <span class="sr-only">{t("rssFeed")}</span>
       </a>
 
       <p>
@@ -61,7 +63,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
         // only display if at least one social link is enabled
         socialCount > 0 && (
           <div class="social-wrapper">
-            <div class="social-links">Social Links:</div>
+            <div class="social-links">{t("socialLinks")}:</div>
             <Socials />
           </div>
         )
@@ -74,7 +76,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
       featuredPosts.length > 0 && (
         <>
           <section id="featured">
-            <h2>Featured</h2>
+            <h2>{t("featured")}</h2>
             <ul>
               {featuredPosts.map(({ data, slug }) => (
                 <Card
@@ -93,7 +95,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
     {
       recentPosts.length > 0 && (
         <section id="recent-posts">
-          <h2>Recent Posts</h2>
+          <h2>{t("recentPosts")}</h2>
           <ul>
             {recentPosts.map(
               ({ data, slug }, index) =>
@@ -112,7 +114,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
 
     <div class="all-posts-btn-wrapper">
       <LinkButton href="/posts/">
-        All Posts
+        {t("allPosts")}{" "}
         <svg xmlns="http://www.w3.org/2000/svg" class="rtl:rotate-180"
           ><path
             d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"
