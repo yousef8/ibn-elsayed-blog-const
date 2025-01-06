@@ -2,12 +2,13 @@
 import Card from "@components/Card";
 import Footer from "@components/Footer.astro";
 import Header from "@components/Header.astro";
-import { SITE } from "@config";
+import { LOCALE, SITE } from "@config";
 import Layout from "@layouts/Layout.astro";
 import Main from "@layouts/Main.astro";
 import getPostsByGroupCondition from "@utils/getPostsByGroupCondition";
-import getRelativePath from "@utils/getRelativePath";
 import { getCollection } from "astro:content";
+import { translateFor } from "@i18n/utils";
+import getRelativePath from "@utils/getRelativePath";
 
 // Redirect to 404 page if `showArchives` config is false
 if (!SITE.showArchives) {
@@ -16,25 +17,26 @@ if (!SITE.showArchives) {
 
 const posts = await getCollection("blog", ({ data }) => !data.draft);
 
-const MonthMap: Record<string, string> = {
-  "1": "January",
-  "2": "February",
-  "3": "March",
-  "4": "April",
-  "5": "May",
-  "6": "June",
-  "7": "July",
-  "8": "August",
-  "9": "September",
-  "10": "October",
-  "11": "November",
-  "12": "December",
-};
+const t = translateFor(Astro.currentLocale || LOCALE.defaultLocale);
+
+type MonthKey =
+  | "1"
+  | "2"
+  | "3"
+  | "4"
+  | "5"
+  | "6"
+  | "7"
+  | "8"
+  | "9"
+  | "10"
+  | "11"
+  | "12";
 ---
 
-<Layout title={`Archives | ${SITE.title}`}>
+<Layout title={`${t("archives")} | ${SITE.title}`}>
   <Header activeNav="archives" />
-  <Main pageTitle="Archives" pageDesc="All the articles I've archived.">
+  <Main pageTitle={t("archives")} pageDesc={t("archives.desc")}>
     {
       Object.entries(
         getPostsByGroupCondition(posts, post =>
@@ -56,7 +58,9 @@ const MonthMap: Record<string, string> = {
               .map(([month, monthGroup]) => (
                 <div class="flex flex-col sm:flex-row">
                   <div class="mt-6 min-w-36 text-lg sm:my-6">
-                    <span class="font-bold">{MonthMap[month]}</span>
+                    <span class="font-bold">
+                      {t(`date.month.${month as MonthKey}`)}
+                    </span>
                     <sup class="text-xs">{monthGroup.length}</sup>
                   </div>
                   <ul>
