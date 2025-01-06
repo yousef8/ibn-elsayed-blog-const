@@ -20,8 +20,11 @@ export interface I18nStrings {
   "search.placeholder": string;
   pages: string;
   page: string;
-  goBack: string;
-  goBackHome: string;
+  "navigation.goBack": string;
+  "navigation.goBackHome": string;
+  "navigation.backToTop": string;
+  "navigation.nextPost": string;
+  "navigation.prevPost": string;
   pageNotFound: string;
   rssFeed: string;
   suggestChanges: string;
