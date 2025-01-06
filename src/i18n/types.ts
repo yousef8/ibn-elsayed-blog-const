@@ -24,6 +24,8 @@ export interface I18nStrings {
   goBackHome: string;
   pageNotFound: string;
   rssFeed: string;
+  "pagination.prev": string;
+  "pagination.next": string;
   "footer.text": string;
   "date.published": string;
   "date.updated": string;
