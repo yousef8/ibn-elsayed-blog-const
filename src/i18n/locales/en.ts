@@ -26,6 +26,7 @@ const englishLocale: I18nStrings = {
   goBackHome: "Go back home",
   pageNotFound: "Page Not Found",
   rssFeed: "RSS Feed",
+  suggestChanges: "Suggest Changes",
   "pagination.prev": "Prev",
   "pagination.next": "Next",
   "footer.text": "Copyright © {year} | All rights reserved",
