@@ -7,7 +7,7 @@ const englishLocale: I18nStrings = {
   posts: "Posts",
   "posts.desc": "All the articles I've posted.",
   tag: "Tag",
-  "tag.desc": "All the articles with the tag {name}",
+  "tag.desc": 'All the articles with the tag "{name}".',
   tags: "Tags",
   "tags.desc": "All the tags used in posts",
   archives: "Archives",
