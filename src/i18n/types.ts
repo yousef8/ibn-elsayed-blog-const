@@ -29,18 +29,18 @@ export interface I18nStrings {
   "footer.text": string;
   "date.published": string;
   "date.updated": string;
-  "date.month.january": string;
-  "date.month.february": string;
-  "date.month.march": string;
-  "date.month.april": string;
-  "date.month.may": string;
-  "date.month.june": string;
-  "date.month.july": string;
-  "date.month.august": string;
-  "date.month.september": string;
-  "date.month.october": string;
-  "date.month.november": string;
-  "date.month.december": string;
+  "date.month.1": string;
+  "date.month.2": string;
+  "date.month.3": string;
+  "date.month.4": string;
+  "date.month.5": string;
+  "date.month.6": string;
+  "date.month.7": string;
+  "date.month.8": string;
+  "date.month.9": string;
+  "date.month.10": string;
+  "date.month.11": string;
+  "date.month.12": string;
   "a11y.skipToContent": string;
 }
 
