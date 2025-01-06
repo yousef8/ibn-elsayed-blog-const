@@ -88,6 +88,7 @@ const nextPost =
       className="my-2"
       editPost={editPost}
       postId={post.id}
+      currentLocale={Astro.currentLocale || LOCALE.defaultLocale}
     />
     <article id="article" class="prose mx-auto mt-8 max-w-3xl">
       <Content />

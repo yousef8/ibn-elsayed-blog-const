@@ -32,7 +32,11 @@ const { page, tag, tagName } = Astro.props;
     <ul>
       {
         page.data.map(({ data, slug }) => (
-          <Card href={`/posts/${slug}/`} frontmatter={data} />
+          <Card
+            href={`/posts/${slug}/`}
+            frontmatter={data}
+            currentLocale={Astro.currentLocale || LOCALE.defaultLocale}
+          />
         ))
       }
     </ul>

@@ -123,6 +123,7 @@ export default function SearchBar({ searchList, currentLocale }: Props) {
               href={`/posts/${item.slug}/`}
               frontmatter={item.data}
               key={`${refIndex}-${item.slug}`}
+              currentLocale={currentLocale}
             />
           ))}
       </ul>

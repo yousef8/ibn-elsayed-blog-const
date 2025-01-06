@@ -75,7 +75,13 @@ type MonthKey =
                           )
                       )
                       .map(({ data, slug }) => (
-                        <Card href={`/posts/${slug}`} frontmatter={data} />
+                        <Card
+                          href={`/posts/${slug}`}
+                          frontmatter={data}
+                          currentLocale={
+                            Astro.currentLocale || LOCALE.defaultLocale
+                          }
+                        />
                       ))}
                   </ul>
                 </div>
