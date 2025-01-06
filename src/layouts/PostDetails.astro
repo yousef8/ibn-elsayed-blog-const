@@ -7,13 +7,15 @@ import Datetime from "@components/Datetime";
 import type { CollectionEntry } from "astro:content";
 import { slugifyStr } from "@utils/slugify";
 import ShareLinks from "@components/ShareLinks.astro";
-import { SITE } from "@config";
+import { LOCALE, SITE } from "@config";
+import { translateFor } from "@i18n/utils";
 import getRelativePath from "@utils/getRelativePath";
 
 export interface Props {
   post: CollectionEntry<"blog">;
   posts: CollectionEntry<"blog">[];
 }
+const t = translateFor(Astro.currentLocale || LOCALE.defaultLocale);
 
 const { post, posts } = Astro.props;
 
@@ -74,7 +76,7 @@ const nextPost =
         ><path
           d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"
         ></path>
-      </svg><span>Go back</span>
+      </svg><span>{t("navigation.goBack")}</span>
     </button>
   </div>
   <main id="main-content">
@@ -110,7 +112,7 @@ const nextPost =
             d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"
           ></path>
         </svg>
-        <span>Back to Top</span>
+        <span>{t("navigation.backToTop")}</span>
       </button>
 
       <ShareLinks />
@@ -144,7 +146,7 @@ const nextPost =
               </>
             </svg>
             <div>
-              <span>Previous Post</span>
+              <span>{t("navigation.prevPost")}</span>
               <div class="text-sm text-skin-accent/85">{prevPost.title}</div>
             </div>
           </a>
@@ -157,7 +159,7 @@ const nextPost =
             class="flex w-full justify-end gap-1 text-right hover:opacity-75 sm:col-start-2"
           >
             <div>
-              <span>Next Post</span>
+              <span>{t("navigation.nextPost")}</span>
               <div class="text-sm text-skin-accent/85">{nextPost.title}</div>
             </div>
             <svg
