@@ -1,6 +1,7 @@
 export interface I18nStrings {
   about: string;
   socialLinks: string;
+  shareLinks: string;
   home: string;
   posts: string;
   "posts.desc": string;

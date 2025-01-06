@@ -3,6 +3,7 @@ import type { I18nStrings } from "i18n/types";
 const englishLocale: I18nStrings = {
   about: "About",
   socialLinks: "Social Links",
+  shareLinks: "Share this post on",
   home: "Home",
   posts: "Posts",
   "posts.desc": "All the articles I've posted.",
