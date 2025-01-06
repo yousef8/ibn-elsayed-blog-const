@@ -2,10 +2,14 @@
 import type { Page } from "astro";
 import LinkButton from "./LinkButton.astro";
 import type { CollectionEntry } from "astro:content";
+import { translateFor } from "@i18n/utils";
+import { LOCALE } from "@config";
 
 export interface Props {
   page: Page<CollectionEntry<"blog">>;
 }
+
+const t = translateFor(Astro.currentLocale || LOCALE.defaultLocale);
 
 const { page } = Astro.props;
 ---
@@ -24,8 +28,8 @@ const { page } = Astro.props;
           class:list={[{ "disabled-svg": !page.url.prev }, "rtl:rotate-180"]}
         >
           <path d="M12.707 17.293 8.414 13H18v-2H8.414l4.293-4.293-1.414-1.414L4.586 12l6.707 6.707z" />
-        </svg>
-        Prev
+        </svg>{" "}
+        {t("pagination.prev")}
       </LinkButton>
       {page.currentPage} / {page.lastPage}
       <LinkButton
@@ -34,7 +38,7 @@ const { page } = Astro.props;
         className={`mx-4 select-none ${page.url.next ? "" : "disabled"}`}
         ariaLabel="Next"
       >
-        Next
+        {t("pagination.next")}{" "}
         <svg
           xmlns="http://www.w3.org/2000/svg"
           class:list={[{ "disabled-svg": !page.url.next }, "rtl:rotate-180"]}
