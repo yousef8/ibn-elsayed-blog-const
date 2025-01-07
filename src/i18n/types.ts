@@ -29,6 +29,7 @@ export interface I18nStrings {
   pageNotFound: string;
   rssFeed: string;
   suggestChanges: string;
+  toggleLightAndDark: string;
   "pagination.prev": string;
   "pagination.next": string;
   "footer.text": string;
