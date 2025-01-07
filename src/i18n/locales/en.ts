@@ -31,6 +31,7 @@ const englishLocale: I18nStrings = {
   pageNotFound: "Page Not Found",
   rssFeed: "RSS Feed",
   suggestChanges: "Suggest Changes",
+  toggleLightAndDark: "Toggles light & dark",
   "pagination.prev": "Prev",
   "pagination.next": "Next",
   "footer.text": "Copyright © {year} | All rights reserved",
