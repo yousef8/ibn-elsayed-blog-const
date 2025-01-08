@@ -8,7 +8,6 @@ const englishLocale: I18nStrings = {
   ...baseStrings,
   about: "About",
   socialLinks: "Social Links",
-  shareLinks: "Share this post on",
   home: "Home",
   posts: "Posts",
   "posts.desc": "All the articles I've posted.",
@@ -74,6 +73,9 @@ const englishLocale: I18nStrings = {
   "socials.steam": `${baseStrings["site.title"]} on Steam`,
   "socials.telegram": `${baseStrings["site.title"]} on Telegram`,
   "socials.mastodon": `${baseStrings["site.title"]} on Mastodon`,
+  "sharePost.desc": "Share this post on",
+  "sharePost.on": "Share this post on {media}",
+  "sharePost.via": "Share this post via {media}",
   "a11y.skipToContent": "Skip to content",
 };
 

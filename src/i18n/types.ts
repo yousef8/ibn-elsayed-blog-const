@@ -2,7 +2,6 @@ export interface I18nStrings {
   "site.title": string;
   about: string;
   socialLinks: string;
-  shareLinks: string;
   home: string;
   posts: string;
   "posts.desc": string;
@@ -68,6 +67,9 @@ export interface I18nStrings {
   "socials.steam": string;
   "socials.telegram": string;
   "socials.mastodon": string;
+  "sharePost.desc": string;
+  "sharePost.on": string;
+  "sharePost.via": string;
   "a11y.skipToContent": string;
 }
 
