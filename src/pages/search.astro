@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import { LOCALE, SITE } from "@config";
+import { LOCALE } from "@config";
 import Layout from "@layouts/Layout.astro";
 import Main from "@layouts/Main.astro";
 import Header from "@components/Header.astro";
@@ -24,7 +24,7 @@ const searchList = sortedPosts.map(({ data, slug }) => ({
 const t = translateFor(Astro.currentLocale || LOCALE.defaultLocale);
 ---
 
-<Layout title={`${t("search")} | ${SITE.title}`}>
+<Layout title={`${t("search")} | ${t("site.title")}`}>
   <Header activeNav="search" />
   <Main pageTitle={t("search")} pageDesc={`${t("search.desc")} ...`}>
     <SearchBar

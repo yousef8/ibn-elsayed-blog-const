@@ -1,8 +1,11 @@
 ---
 import { LOCALE, SITE } from "@config";
+import { translateFor } from "@i18n/utils";
 import "@styles/base.css";
 import getRelativePath from "@utils/getRelativePath";
 import { ViewTransitions } from "astro:transitions";
+
+const t = translateFor(Astro.currentLocale || LOCALE.defaultLocale);
 
 const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
 
@@ -19,7 +22,7 @@ export interface Props {
 }
 
 const {
-  title = SITE.title,
+  title = t("site.title"),
   author = SITE.author,
   profile = SITE.profile,
   description = SITE.desc,

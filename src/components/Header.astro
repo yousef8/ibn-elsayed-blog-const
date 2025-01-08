@@ -25,12 +25,12 @@ const { activeNav } = Astro.props;
               src={getRelativePath(
                 `/assets/${LOGO_IMAGE.svg ? "logo.svg" : "logo.png"}`
               )}
-              alt={SITE.title}
+              alt={t("site.title")}
               width={LOGO_IMAGE.width}
               height={LOGO_IMAGE.height}
             />
           ) : (
-            SITE.title
+            t("site.title")
           )
         }
       </a>

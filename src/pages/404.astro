@@ -1,5 +1,5 @@
 ---
-import { LOCALE, SITE } from "@config";
+import { LOCALE } from "@config";
 import Layout from "@layouts/Layout.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
@@ -9,7 +9,7 @@ import { translateFor } from "@i18n/utils";
 const t = translateFor(Astro.currentLocale || LOCALE.defaultLocale);
 ---
 
-<Layout title={`404 Not Found | ${SITE.title}`}>
+<Layout title={`404 Not Found | ${t("site.title")}`}>
   <Header />
 
   <main id="main-content">

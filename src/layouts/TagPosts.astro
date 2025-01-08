@@ -5,7 +5,7 @@ import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import Card from "@components/Card";
 import Pagination from "@components/Pagination.astro";
-import { LOCALE, SITE } from "@config";
+import { LOCALE } from "@config";
 import type { Page } from "astro";
 import type { CollectionEntry } from "astro:content";
 import { translateFor } from "@i18n/utils";
@@ -21,7 +21,7 @@ const t = translateFor(Astro.currentLocale || LOCALE.defaultLocale);
 const { page, tag, tagName } = Astro.props;
 ---
 
-<Layout title={`${t("tag")}: ${tagName} | ${SITE.title}`}>
+<Layout title={`${t("tag")}: ${tagName} | ${t("site.title")}`}>
   <Header activeNav="tags" />
   <Main
     pageTitle={[`${t("tag")}:`, `${tagName}`]}

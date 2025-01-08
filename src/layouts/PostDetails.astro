@@ -7,7 +7,7 @@ import Datetime from "@components/Datetime";
 import type { CollectionEntry } from "astro:content";
 import { slugifyStr } from "@utils/slugify";
 import ShareLinks from "@components/ShareLinks.astro";
-import { LOCALE, SITE } from "@config";
+import { LOCALE } from "@config";
 import { translateFor } from "@i18n/utils";
 import getRelativePath from "@utils/getRelativePath";
 
@@ -40,7 +40,7 @@ const ogUrl = new URL(
 ).href;
 
 const layoutProps = {
-  title: `${title} | ${SITE.title}`,
+  title: `${title} | ${t("site.title")}`,
   author,
   description,
   pubDatetime,
