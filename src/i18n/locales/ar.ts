@@ -8,7 +8,6 @@ export const ARLocale: I18nStrings = {
   ...baseStrings,
   about: "عنى",
   socialLinks: "تابعنى على",
-  shareLinks: "شارك هذه المقالة على",
   home: "الصفحة الرئيسية",
   posts: "المقالات",
   "posts.desc": "كل ما نشرت من مقالات",
@@ -74,5 +73,8 @@ export const ARLocale: I18nStrings = {
   "socials.steam": `${baseStrings["site.title"]} على Steam`,
   "socials.telegram": `${baseStrings["site.title"]} على Telegram`,
   "socials.mastodon": `${baseStrings["site.title"]} على Mastodon`,
+  "sharePost.desc": "شارك هذه المقالة على",
+  "sharePost.on": "شارك هذه المقالة على {media}",
+  "sharePost.via": "شارك هذه المقالة بواسطة {media}",
   "a11y.skipToContent": "تجاوز إلى المحتوى",
 };
