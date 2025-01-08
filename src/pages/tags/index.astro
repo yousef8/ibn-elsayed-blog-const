@@ -6,7 +6,7 @@ import Layout from "@layouts/Layout.astro";
 import Main from "@layouts/Main.astro";
 import Tag from "@components/Tag.astro";
 import getUniqueTags from "@utils/getUniqueTags";
-import { LOCALE, SITE } from "@config";
+import { LOCALE } from "@config";
 import { translateFor } from "@i18n/utils";
 
 const posts = await getCollection("blog");
@@ -16,7 +16,7 @@ const t = translateFor(Astro.currentLocale || LOCALE.defaultLocale);
 let tags = getUniqueTags(posts);
 ---
 
-<Layout title={`${t("tags")} | ${SITE.title}`}>
+<Layout title={`${t("tags")} | ${t("site.title")}`}>
   <Header activeNav="tags" />
   <Main pageTitle={t("tags")} pageDesc={t("tags.desc")}>
     <ul>
