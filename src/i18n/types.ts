@@ -48,6 +48,26 @@ export interface I18nStrings {
   "date.month.10": string;
   "date.month.11": string;
   "date.month.12": string;
+  "socials.github": string;
+  "socials.facebook": string;
+  "socials.instagram": string;
+  "socials.linkedin": string;
+  "socials.mail": string;
+  "socials.x": string;
+  "socials.twitch": string;
+  "socials.youtube": string;
+  "socials.whatsapp": string;
+  "socials.snapchat": string;
+  "socials.pinterest": string;
+  "socials.tiktok": string;
+  "socials.codepen": string;
+  "socials.discord": string;
+  "socials.gitlab": string;
+  "socials.reddit": string;
+  "socials.skype": string;
+  "socials.steam": string;
+  "socials.telegram": string;
+  "socials.mastodon": string;
   "a11y.skipToContent": string;
 }
 
