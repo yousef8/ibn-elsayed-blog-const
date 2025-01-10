@@ -4,7 +4,7 @@ const baseStrings = {
   "site.title": "AstroPaper",
 };
 
-const englishLocale: I18nStrings = {
+const ENLocale: I18nStrings = {
   ...baseStrings,
   about: "About",
   socialLinks: "Social Links",
@@ -79,4 +79,4 @@ const englishLocale: I18nStrings = {
   "a11y.skipToContent": "Skip to content",
 };
 
-export default englishLocale;
+export default ENLocale;
