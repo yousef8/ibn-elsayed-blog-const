@@ -1,6 +1,6 @@
 import type { I18nStrings } from "../types";
 import { ARLocale } from "./ar";
-import englishLocale from "./en";
+import ENLocale from "./en";
 
 export type LocaleProfile = {
   messages: I18nStrings;
@@ -14,7 +14,7 @@ export type SupportedLocales = Array<keyof typeof localeToProfile>;
 export const localeToProfile = {
   ar: { messages: ARLocale, langTag: "ar", direction: "rtl" },
   en: {
-    messages: englishLocale,
+    messages: ENLocale,
     langTag: "en-US",
     direction: "ltr",
   },
