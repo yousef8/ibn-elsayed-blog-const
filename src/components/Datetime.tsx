@@ -1,22 +1,23 @@
-import { LOCALE, SITE } from "@config";
-import { translateFor } from "@i18n/utils";
+import { SITE } from "@config";
+import { getLocaleInfo, translateFor } from "@i18n/utils";
 import type { CollectionEntry } from "astro:content";
 
 interface DatetimesProps {
   pubDatetime: string | Date;
   modDatetime: string | Date | undefined | null;
+  currentLocale: string | undefined;
 }
 
 interface EditPostProps {
   editPost?: CollectionEntry<"blog">["data"]["editPost"];
   postId?: CollectionEntry<"blog">["id"];
-  currentLocale: string;
+  currentLocale: string | undefined;
 }
 
 interface Props extends DatetimesProps, EditPostProps {
   size?: "sm" | "lg";
   className?: string;
-  currentLocale: string;
+  currentLocale: string | undefined;
 }
 
 export default function Datetime({
@@ -55,6 +56,7 @@ export default function Datetime({
         <FormattedDatetime
           pubDatetime={pubDatetime}
           modDatetime={modDatetime}
+          currentLocale={currentLocale}
         />
         {size === "lg" && (
           <EditPost
@@ -68,7 +70,12 @@ export default function Datetime({
   );
 }
 
-const FormattedDatetime = ({ pubDatetime, modDatetime }: DatetimesProps) => {
+const FormattedDatetime = ({
+  pubDatetime,
+  modDatetime,
+  currentLocale,
+}: DatetimesProps) => {
+  const LOCALE = getLocaleInfo(currentLocale);
   const myDatetime = new Date(
     modDatetime && modDatetime > pubDatetime ? modDatetime : pubDatetime
   );

@@ -1,9 +1,8 @@
 ---
-import { LOCALE } from "@config";
 import type { I18nStrings } from "@i18n/types";
 import { translateFor } from "@i18n/utils";
 
-const t = translateFor(Astro.currentLocale || LOCALE.defaultLocale);
+const t = translateFor(Astro.currentLocale);
 
 // Remove current url path and remove trailing slash if exists
 const currentUrlPath = Astro.url.pathname.replace(/\/+$/, "");

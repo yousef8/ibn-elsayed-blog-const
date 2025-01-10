@@ -3,13 +3,12 @@ import type { Page } from "astro";
 import LinkButton from "./LinkButton.astro";
 import type { CollectionEntry } from "astro:content";
 import { translateFor } from "@i18n/utils";
-import { LOCALE } from "@config";
 
 export interface Props {
   page: Page<CollectionEntry<"blog">>;
 }
 
-const t = translateFor(Astro.currentLocale || LOCALE.defaultLocale);
+const t = translateFor(Astro.currentLocale);
 
 const { page } = Astro.props;
 ---

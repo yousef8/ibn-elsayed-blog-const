@@ -13,7 +13,7 @@ export type SearchItem = {
 
 interface Props {
   searchList: SearchItem[];
-  currentLocale: string;
+  currentLocale: string | undefined;
 }
 
 interface SearchResult {
