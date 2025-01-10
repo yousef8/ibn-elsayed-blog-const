@@ -1,12 +1,11 @@
 ---
-import { LOCALE } from "@config";
 import Layout from "@layouts/Layout.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import LinkButton from "@components/LinkButton.astro";
 import { translateFor } from "@i18n/utils";
 
-const t = translateFor(Astro.currentLocale || LOCALE.defaultLocale);
+const t = translateFor(Astro.currentLocale);
 ---
 
 <Layout title={`404 Not Found | ${t("site.title")}`}>

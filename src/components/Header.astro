@@ -1,5 +1,5 @@
 ---
-import { LOCALE, LOGO_IMAGE, SITE } from "@config";
+import { LOGO_IMAGE, SITE } from "@config";
 import Hr from "./Hr.astro";
 import LinkButton from "./LinkButton.astro";
 import getRelativePath from "@utils/getRelativePath";
@@ -9,7 +9,7 @@ export interface Props {
   activeNav?: "posts" | "archives" | "tags" | "about" | "search";
 }
 
-const t = translateFor(Astro.currentLocale || LOCALE.defaultLocale);
+const t = translateFor(Astro.currentLocale);
 
 const { activeNav } = Astro.props;
 ---

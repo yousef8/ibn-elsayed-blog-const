@@ -1,5 +1,5 @@
 ---
-import { LOCALE, SOCIALS } from "@config";
+import { SOCIALS } from "@config";
 import LinkButton from "./LinkButton.astro";
 import socialIcons from "@assets/socialIcons";
 import { translateFor } from "@i18n/utils";
@@ -9,7 +9,7 @@ export interface Props {
   centered?: boolean;
 }
 
-const t = translateFor(Astro.currentLocale || LOCALE.defaultLocale);
+const t = translateFor(Astro.currentLocale);
 
 const { centered = false } = Astro.props;
 ---

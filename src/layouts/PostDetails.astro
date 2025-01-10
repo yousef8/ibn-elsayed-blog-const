@@ -7,7 +7,6 @@ import Datetime from "@components/Datetime";
 import type { CollectionEntry } from "astro:content";
 import { slugifyStr } from "@utils/slugify";
 import ShareLinks from "@components/ShareLinks.astro";
-import { LOCALE } from "@config";
 import { translateFor } from "@i18n/utils";
 import getRelativePath from "@utils/getRelativePath";
 
@@ -15,7 +14,7 @@ export interface Props {
   post: CollectionEntry<"blog">;
   posts: CollectionEntry<"blog">[];
 }
-const t = translateFor(Astro.currentLocale || LOCALE.defaultLocale);
+const t = translateFor(Astro.currentLocale);
 
 const { post, posts } = Astro.props;
 
@@ -90,7 +89,7 @@ const nextPost =
       className="my-2"
       editPost={editPost}
       postId={post.id}
-      currentLocale={Astro.currentLocale || LOCALE.defaultLocale}
+      currentLocale={Astro.currentLocale}
     />
     <article id="article" class="prose mx-auto mt-8 max-w-3xl">
       <Content />

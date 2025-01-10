@@ -1,11 +1,14 @@
 ---
-import { LOCALE, SITE } from "@config";
-import { translateFor } from "@i18n/utils";
+import { SITE } from "@config";
+import { DEFAULT_LOCALE } from "@i18n/locales";
+import { translateFor, getLocaleInfo } from "@i18n/utils";
 import "@styles/base.css";
 import getRelativePath from "@utils/getRelativePath";
 import { ViewTransitions } from "astro:transitions";
 
-const t = translateFor(Astro.currentLocale || LOCALE.defaultLocale);
+const t = translateFor(Astro.currentLocale);
+
+const LOCALE = getLocaleInfo(Astro.currentLocale);
 
 const googleSiteVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION;
 
@@ -59,9 +62,9 @@ const structuredData = {
 
 <!doctype html>
 <html
-  lang=`${LOCALE.defaultLocale ?? "en"}`
+  lang=`${Astro.currentLocale ?? DEFAULT_LOCALE}`
   class={`${scrollSmooth && "scroll-smooth"}`}
-  dir=`${LOCALE.direction || "ltr"}`
+  dir={LOCALE.direction}
 >
   <head>
     <meta charset="UTF-8" />

@@ -7,7 +7,7 @@ export interface Props {
   href?: string;
   frontmatter: CollectionEntry<"blog">["data"];
   secHeading?: boolean;
-  currentLocale: string;
+  currentLocale: string | undefined;
 }
 
 export default function Card({

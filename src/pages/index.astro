@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import { LOCALE, SITE, SOCIALS } from "@config";
+import { SITE, SOCIALS } from "@config";
 import Layout from "@layouts/Layout.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
@@ -13,7 +13,7 @@ import getRelativePath from "@utils/getRelativePath";
 import { translateFor } from "@i18n/utils";
 
 const posts = await getCollection("blog");
-const t = translateFor(Astro.currentLocale || LOCALE.defaultLocale);
+const t = translateFor(Astro.currentLocale);
 
 const sortedPosts = getSortedPosts(posts);
 const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
@@ -83,7 +83,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
                   href={`/posts/${slug}/`}
                   frontmatter={data}
                   secHeading={false}
-                  currentLocale={Astro.currentLocale || LOCALE.defaultLocale}
+                  currentLocale={Astro.currentLocale}
                 />
               ))}
             </ul>
@@ -105,7 +105,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
                     href={`/posts/${slug}/`}
                     frontmatter={data}
                     secHeading={false}
-                    currentLocale={Astro.currentLocale || LOCALE.defaultLocale}
+                    currentLocale={Astro.currentLocale}
                   />
                 )
             )}

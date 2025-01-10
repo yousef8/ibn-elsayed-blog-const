@@ -2,7 +2,6 @@
 import { translateFor } from "@i18n/utils";
 import Hr from "./Hr.astro";
 import Socials from "./Socials.astro";
-import { LOCALE } from "@config";
 
 const currentYear = new Date().getFullYear();
 
@@ -10,7 +9,7 @@ export interface Props {
   noMarginTop?: boolean;
 }
 
-const t = translateFor(Astro.currentLocale || LOCALE.defaultLocale);
+const t = translateFor(Astro.currentLocale);
 
 const { noMarginTop = false } = Astro.props;
 ---

@@ -2,7 +2,7 @@
 import Card from "@components/Card";
 import Footer from "@components/Footer.astro";
 import Header from "@components/Header.astro";
-import { LOCALE, SITE } from "@config";
+import { SITE } from "@config";
 import Layout from "@layouts/Layout.astro";
 import Main from "@layouts/Main.astro";
 import getPostsByGroupCondition from "@utils/getPostsByGroupCondition";
@@ -17,7 +17,7 @@ if (!SITE.showArchives) {
 
 const posts = await getCollection("blog", ({ data }) => !data.draft);
 
-const t = translateFor(Astro.currentLocale || LOCALE.defaultLocale);
+const t = translateFor(Astro.currentLocale);
 
 type MonthKey =
   | "1"
@@ -78,9 +78,7 @@ type MonthKey =
                         <Card
                           href={`/posts/${slug}`}
                           frontmatter={data}
-                          currentLocale={
-                            Astro.currentLocale || LOCALE.defaultLocale
-                          }
+                          currentLocale={Astro.currentLocale}
                         />
                       ))}
                   </ul>

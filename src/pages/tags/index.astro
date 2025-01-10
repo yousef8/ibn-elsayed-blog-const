@@ -6,12 +6,11 @@ import Layout from "@layouts/Layout.astro";
 import Main from "@layouts/Main.astro";
 import Tag from "@components/Tag.astro";
 import getUniqueTags from "@utils/getUniqueTags";
-import { LOCALE } from "@config";
 import { translateFor } from "@i18n/utils";
 
 const posts = await getCollection("blog");
 
-const t = translateFor(Astro.currentLocale || LOCALE.defaultLocale);
+const t = translateFor(Astro.currentLocale);
 
 let tags = getUniqueTags(posts);
 ---

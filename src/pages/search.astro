@@ -1,6 +1,5 @@
 ---
 import { getCollection } from "astro:content";
-import { LOCALE } from "@config";
 import Layout from "@layouts/Layout.astro";
 import Main from "@layouts/Main.astro";
 import Header from "@components/Header.astro";
@@ -21,7 +20,7 @@ const searchList = sortedPosts.map(({ data, slug }) => ({
   slug,
 }));
 
-const t = translateFor(Astro.currentLocale || LOCALE.defaultLocale);
+const t = translateFor(Astro.currentLocale);
 ---
 
 <Layout title={`${t("search")} | ${t("site.title")}`}>
@@ -30,7 +29,7 @@ const t = translateFor(Astro.currentLocale || LOCALE.defaultLocale);
     <SearchBar
       client:load
       searchList={searchList}
-      currentLocale={Astro.currentLocale || LOCALE.defaultLocale}
+      currentLocale={Astro.currentLocale}
     />
   </Main>
   <Footer />

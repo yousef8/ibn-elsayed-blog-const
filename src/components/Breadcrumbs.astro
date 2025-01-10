@@ -4,7 +4,7 @@ import { LOCALE } from "@config";
 import { translateFor } from "@i18n/utils";
 import getRelativePath from "@utils/getRelativePath";
 
-const t = translateFor(Astro.currentLocale || LOCALE.defaultLocale);
+const t = translateFor(Astro.currentLocale);
 
 const pathname = Astro.url.pathname.slice(import.meta.env.BASE_URL.length);
 

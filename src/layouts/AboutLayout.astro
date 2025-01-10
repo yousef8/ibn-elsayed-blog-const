@@ -2,7 +2,6 @@
 import Breadcrumbs from "@components/Breadcrumbs.astro";
 import Footer from "@components/Footer.astro";
 import Header from "@components/Header.astro";
-import { LOCALE } from "@config";
 import { translateFor } from "@i18n/utils";
 import Layout from "./Layout.astro";
 
@@ -13,7 +12,7 @@ export interface Props {
   };
 }
 
-const t = translateFor(Astro.currentLocale || LOCALE.defaultLocale);
+const t = translateFor(Astro.currentLocale);
 
 const { frontmatter } = Astro.props;
 ---

@@ -5,7 +5,6 @@ import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import Card from "@components/Card";
 import Pagination from "@components/Pagination.astro";
-import { LOCALE } from "@config";
 import type { Page } from "astro";
 import type { CollectionEntry } from "astro:content";
 import { translateFor } from "@i18n/utils";
@@ -16,7 +15,7 @@ export interface Props {
   tagName: string;
 }
 
-const t = translateFor(Astro.currentLocale || LOCALE.defaultLocale);
+const t = translateFor(Astro.currentLocale);
 
 const { page, tag, tagName } = Astro.props;
 ---
@@ -35,7 +34,7 @@ const { page, tag, tagName } = Astro.props;
           <Card
             href={`/posts/${slug}/`}
             frontmatter={data}
-            currentLocale={Astro.currentLocale || LOCALE.defaultLocale}
+            currentLocale={Astro.currentLocale}
           />
         ))
       }
