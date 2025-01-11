@@ -12,7 +12,7 @@ export type LocaleProfile = {
 export type SupportedLocales = Array<keyof typeof localeToProfile>;
 
 export const localeToProfile = {
-  ar: { messages: ARLocale, langTag: "ar", direction: "rtl" },
+  ar: { messages: ARLocale, langTag: "ar-EG", direction: "rtl" },
   en: {
     messages: ENLocale,
     langTag: "en-US",

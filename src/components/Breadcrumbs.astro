@@ -1,8 +1,9 @@
 ---
 import type { I18nStrings } from "@i18n/types";
-import { translateFor } from "@i18n/utils";
+import { getLocaleInfo, translateFor } from "@i18n/utils";
 
 const t = translateFor(Astro.currentLocale);
+const LOCALE = getLocaleInfo(Astro.currentLocale);
 
 // Remove current url path and remove trailing slash if exists
 const currentUrlPath = Astro.url.pathname.replace(/\/+$/, "");
@@ -20,7 +21,7 @@ breadcrumbList[0] === "posts" &&
   breadcrumbList.splice(
     0,
     2,
-    `${t("posts")} (${t("page")} ${breadcrumbList[1] || 1})`
+    `${t("posts")} (${t("page")} ${parseInt(breadcrumbList[1] || "1").toLocaleString(LOCALE.langTag)})`
   );
 
 // if breadcrumb is Home > Tags > [tag] > [page] <etc>
