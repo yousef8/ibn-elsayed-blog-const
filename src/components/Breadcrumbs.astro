@@ -1,10 +1,10 @@
 ---
 import type { I18nStrings } from "@i18n/types";
-import { LOCALE } from "@config";
-import { translateFor } from "@i18n/utils";
 import getRelativePath from "@utils/getRelativePath";
+import { getLocaleInfo, translateFor } from "@i18n/utils";
 
 const t = translateFor(Astro.currentLocale);
+const LOCALE = getLocaleInfo(Astro.currentLocale);
 
 const pathname = Astro.url.pathname.slice(import.meta.env.BASE_URL.length);
 
@@ -24,7 +24,7 @@ breadcrumbList[0] === "posts" &&
   breadcrumbList.splice(
     0,
     2,
-    `${t("posts")} (${t("page")} ${breadcrumbList[1] || 1})`
+    `${t("posts")} (${t("page")} ${parseInt(breadcrumbList[1] || "1").toLocaleString(LOCALE.langTag)})`
   );
 
 // if breadcrumb is Home > Tags > [tag] > [page] <etc>
