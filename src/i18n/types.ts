@@ -71,6 +71,12 @@ export interface I18nStrings {
   "sharePost.on": string;
   "sharePost.via": string;
   "a11y.skipToContent": string;
+  "a11y.rssFeed": string;
+  "a11y.openMenu": string;
+  "a11y.closeMenu": string;
+  "a11y.archives": string;
+  "a11y.search": string;
+  "a11y.themeButtonDefaultLabel": string;
 }
 
 export type I18nKeys = keyof I18nStrings;

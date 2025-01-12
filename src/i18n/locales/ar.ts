@@ -77,4 +77,10 @@ export const ARLocale: I18nStrings = {
   "sharePost.on": "شارك هذه المقالة على {media}",
   "sharePost.via": "شارك هذه المقالة بواسطة {media}",
   "a11y.skipToContent": "تجاوز إلى المحتوى",
+  "a11y.rssFeed": "تغذية  بواسطة rss",
+  "a11y.openMenu": "افتح القائمة",
+  "a11y.closeMenu": "اغلق القائمة",
+  "a11y.archives": "الأرشيف",
+  "a11y.search": "البحث",
+  "a11y.themeButtonDefaultLabel": "تلقائى",
 };

@@ -31,7 +31,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
         target="_blank"
         href={getRelativePath("/rss.xml")}
         class="rss-link"
-        aria-label="rss feed"
+        aria-label={t("a11y.rssFeed")}
         title={t("rssFeed")}
       >
         <svg xmlns="http://www.w3.org/2000/svg" class="rss-icon rtl:-rotate-90"

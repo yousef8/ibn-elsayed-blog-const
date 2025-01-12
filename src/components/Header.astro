@@ -37,9 +37,11 @@ const { activeNav } = Astro.props;
       <nav id="nav-menu">
         <button
           class="hamburger-menu focus-outline"
-          aria-label="Open Menu"
+          aria-label={t("a11y.openMenu")}
           aria-expanded="false"
           aria-controls="menu-items"
+          data-open-text={t("a11y.openMenu")}
+          data-close-text={t("a11y.closeMenu")}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -91,7 +93,7 @@ const { activeNav } = Astro.props;
                 <LinkButton
                   href={getRelativePath("/archives/")}
                   className={`focus-outline flex justify-center p-3 sm:p-1`}
-                  ariaLabel="archives"
+                  ariaLabel={t("a11y.archives")}
                   title={`   ${t("archives")}`}
                 >
                   <svg
@@ -126,7 +128,7 @@ const { activeNav } = Astro.props;
               className={`focus-outline p-3 sm:p-1 ${
                 activeNav === "search" ? "active" : ""
               } flex`}
-              ariaLabel={t("search")}
+              ariaLabel={t("a11y.search")}
               title={` ${t("search")}`}
             >
               <svg
@@ -146,7 +148,7 @@ const { activeNav } = Astro.props;
                   id="theme-btn"
                   class="focus-outline"
                   title={t("toggleLightAndDark")}
-                  aria-label="auto"
+                  aria-label={t("a11y.themeButtonDefaultLabel")}
                   aria-live="polite"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" id="moon-svg">
@@ -242,18 +244,19 @@ const { activeNav } = Astro.props;
 <script>
   function toggleNav() {
     // Toggle menu
-    const menuBtn = document.querySelector(".hamburger-menu");
+    const menuBtn = document.querySelector(
+      ".hamburger-menu"
+    ) as HTMLButtonElement;
     const menuIcon = document.querySelector(".menu-icon");
     const menuItems = document.querySelector("#menu-items");
+    const openText = menuBtn?.dataset.openText || "Open Menu";
+    const closeText = menuBtn?.dataset.closeText || "Close Menu";
 
     menuBtn?.addEventListener("click", () => {
       const menuExpanded = menuBtn.getAttribute("aria-expanded") === "true";
       menuIcon?.classList.toggle("is-active");
       menuBtn.setAttribute("aria-expanded", menuExpanded ? "false" : "true");
-      menuBtn.setAttribute(
-        "aria-label",
-        menuExpanded ? "Open Menu" : "Close Menu"
-      );
+      menuBtn.setAttribute("aria-label", menuExpanded ? openText : closeText);
       menuItems?.classList.toggle("display-none");
     });
   }

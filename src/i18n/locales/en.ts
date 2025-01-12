@@ -77,6 +77,12 @@ const ENLocale: I18nStrings = {
   "sharePost.on": "Share this post on {media}",
   "sharePost.via": "Share this post via {media}",
   "a11y.skipToContent": "Skip to content",
+  "a11y.rssFeed": "rss feed",
+  "a11y.openMenu": "Open Menu",
+  "a11y.closeMenu": "Close Menu",
+  "a11y.archives": "archives",
+  "a11y.search": "search",
+  "a11y.themeButtonDefaultLabel": "auto",
 };
 
 export default ENLocale;
