@@ -16,7 +16,7 @@ const { page } = Astro.props;
 
 {
   page.lastPage > 1 && (
-    <nav class="pagination-wrapper" aria-label="Pagination">
+    <nav class="pagination-wrapper" aria-label={t("a11y.pagination")}>
       <LinkButton
         disabled={!page.url.prev}
         href={page.url.prev as string}

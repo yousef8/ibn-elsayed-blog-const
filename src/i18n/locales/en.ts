@@ -83,6 +83,7 @@ const ENLocale: I18nStrings = {
   "a11y.archives": "archives",
   "a11y.search": "search",
   "a11y.themeButtonDefaultLabel": "auto",
+  "a11y.pagination": "Pagination",
   "a11y.breadcrumb": "breadcrumb",
 };
 
