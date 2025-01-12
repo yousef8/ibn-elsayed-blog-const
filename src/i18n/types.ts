@@ -77,6 +77,7 @@ export interface I18nStrings {
   "a11y.archives": string;
   "a11y.search": string;
   "a11y.themeButtonDefaultLabel": string;
+  "a11y.pagination": string;
   "a11y.breadcrumb": string;
 }
 

@@ -83,5 +83,6 @@ export const ARLocale: I18nStrings = {
   "a11y.archives": "الأرشيف",
   "a11y.search": "البحث",
   "a11y.themeButtonDefaultLabel": "تلقائى",
+  "a11y.pagination": "ترقيم الصفحات",
   "a11y.breadcrumb": "اثار الطريق",
 };
