@@ -1,3 +1,4 @@
+import { getRelativeLocalePath } from "@i18n/utils";
 import getRelativePath from "@utils/getRelativePath";
 import { slugifyStr } from "@utils/slugify";
 import type { CollectionEntry } from "astro:content";
@@ -26,7 +27,7 @@ export default function Card({
   return (
     <li className="my-6">
       <a
-        href={href && getRelativePath(href)}
+        href={getRelativePath(getRelativeLocalePath(currentLocale, href))}
         className="inline-block text-lg font-medium text-skin-accent decoration-dashed underline-offset-4 focus-visible:no-underline focus-visible:underline-offset-0"
       >
         {secHeading ? (

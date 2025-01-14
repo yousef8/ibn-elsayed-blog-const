@@ -1,3 +1,4 @@
+import { type GetLocaleOptions, getRelativeLocaleUrl } from "astro:i18n";
 import {
   type LocaleProfile,
   type SupportedLocales,
@@ -22,9 +23,35 @@ export function translateFor(locale: string | undefined) {
   };
 }
 
-export function getLocaleInfo(locale: string | undefined): LocaleProfile {
-  if (locale && SUPPORTED_LOCALES.includes(locale as SupportedLocales[number]))
-    return localeToProfile[locale as SupportedLocales[number]];
+function isLocaleKey(locale: string): locale is SupportedLocales[number] {
+  return SUPPORTED_LOCALES.includes(locale as SupportedLocales[number]);
+}
 
-  return localeToProfile[DEFAULT_LOCALE];
+export function isValidLocaleKey(locale: string): boolean {
+  return SUPPORTED_LOCALES.includes(locale as SupportedLocales[number]);
+}
+
+export function getLocaleInfo(locale?: string): LocaleProfile {
+  return locale && isLocaleKey(locale)
+    ? localeToProfile[locale]
+    : localeToProfile[DEFAULT_LOCALE];
+}
+
+export function isPathLocalized(path: string): boolean {
+  const possibleLocalKeyInPath = path.split("/").splice(1)[0];
+  return isValidLocaleKey(possibleLocalKeyInPath);
+}
+
+export function getRelativeLocalePath(
+  locale: string | undefined,
+  path?: string,
+  options?: GetLocaleOptions
+): string {
+  if (path && isPathLocalized(path)) {
+    return path;
+  }
+
+  if (!locale || !isLocaleKey(locale)) locale = DEFAULT_LOCALE;
+
+  return getRelativeLocaleUrl(locale, path, options);
 }

@@ -1,5 +1,6 @@
 ---
 import getRelativePath from "@utils/getRelativePath";
+import { getRelativeLocalePath } from "@i18n/utils";
 
 export interface Props {
   href: string;
@@ -31,7 +32,11 @@ const {
     </span>
   ) : (
     <a
-      href={isExternalPath(href) ? href : getRelativePath(href)}
+      href={
+        isExternalPath(href)
+          ? href
+          : getRelativePath(getRelativeLocalePath(Astro.currentLocale, href))
+      }
       class:list={["group inline-block hover:text-skin-accent", className]}
       aria-label={ariaLabel}
       title={title}

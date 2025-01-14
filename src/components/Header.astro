@@ -3,7 +3,7 @@ import { LOGO_IMAGE, SITE } from "@config";
 import Hr from "./Hr.astro";
 import LinkButton from "./LinkButton.astro";
 import getRelativePath from "@utils/getRelativePath";
-import { translateFor } from "@i18n/utils";
+import { translateFor, getRelativeLocalePath } from "@i18n/utils";
 
 export interface Props {
   activeNav?: "posts" | "archives" | "tags" | "about" | "search";
@@ -18,7 +18,10 @@ const { activeNav } = Astro.props;
   <a id="skip-to-content" href="#main-content">{t("a11y.skipToContent")}</a>
   <div class="nav-container">
     <div class="top-nav-wrap">
-      <a href={getRelativePath("/")} class="logo whitespace-nowrap">
+      <a
+        href={getRelativePath(getRelativeLocalePath(Astro.currentLocale, "/"))}
+        class="logo whitespace-nowrap"
+      >
         {
           LOGO_IMAGE.enable ? (
             <img
@@ -65,7 +68,9 @@ const { activeNav } = Astro.props;
         <ul id="menu-items" class="display-none sm:flex">
           <li>
             <a
-              href={getRelativePath("/posts/")}
+              href={getRelativePath(
+                getRelativeLocalePath(Astro.currentLocale, "/posts/")
+              )}
               class={activeNav === "posts" ? "active" : ""}
             >
               {t("posts")}
@@ -73,7 +78,9 @@ const { activeNav } = Astro.props;
           </li>
           <li>
             <a
-              href={getRelativePath("/tags/")}
+              href={getRelativePath(
+                getRelativeLocalePath(Astro.currentLocale, "/tags/")
+              )}
               class={activeNav === "tags" ? "active" : ""}
             >
               {t("tags")}
@@ -81,7 +88,9 @@ const { activeNav } = Astro.props;
           </li>
           <li>
             <a
-              href={getRelativePath("/about/")}
+              href={getRelativePath(
+                getRelativeLocalePath(Astro.currentLocale, "/about/")
+              )}
               class={activeNav === "about" ? "active" : ""}
             >
               {t("about")}
@@ -91,7 +100,7 @@ const { activeNav } = Astro.props;
             SITE.showArchives && (
               <li>
                 <LinkButton
-                  href={getRelativePath("/archives/")}
+                  href={"/archives/"}
                   className={`focus-outline flex justify-center p-3 sm:p-1`}
                   ariaLabel={t("a11y.archives")}
                   title={`   ${t("archives")}`}
@@ -124,7 +133,7 @@ const { activeNav } = Astro.props;
           }
           <li>
             <LinkButton
-              href={getRelativePath("/search/")}
+              href={"/search/"}
               className={`focus-outline p-3 sm:p-1 ${
                 activeNav === "search" ? "active" : ""
               } flex`}
