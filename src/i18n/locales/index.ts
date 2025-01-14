@@ -17,6 +17,7 @@ export const localeToProfile = {
     messages: ENLocale,
     langTag: "en-US",
     direction: "ltr",
+    default: true,
   },
 } satisfies Record<string, LocaleProfile>;
 
