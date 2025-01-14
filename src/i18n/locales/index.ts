@@ -4,7 +4,7 @@ import ENLocale from "./en";
 
 export type LocaleProfile = {
   messages: I18nStrings;
-  langTag: string;
+  langTag: string; // Extremly important used in localizing dates, numbers and sitemap,  only English alphabet and hyphen allowed
   direction: "rtl" | "ltr" | "auto";
   default?: boolean;
 };
@@ -29,3 +29,11 @@ export const DEFAULT_LOCALE =
   SUPPORTED_LOCALES.find(
     key => (localeToProfile[key] as LocaleProfile)?.default === true
   ) ?? SUPPORTED_LOCALES[0];
+
+export const LOCALES_TO_LANG = Object.fromEntries(
+  // For Sitemap
+  Object.entries(localeToProfile).map(([locale, profile]) => [
+    locale,
+    profile.langTag,
+  ])
+) as Record<keyof typeof localeToProfile, string>;
