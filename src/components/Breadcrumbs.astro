@@ -1,6 +1,11 @@
 ---
 import type { I18nStrings } from "@i18n/types";
-import { getLocaleInfo, translateFor } from "@i18n/utils";
+import {
+  getLocaleInfo,
+  getRelativeLocalePath,
+  translateFor,
+  isValidLocaleKey,
+} from "@i18n/utils";
 
 const t = translateFor(Astro.currentLocale);
 const LOCALE = getLocaleInfo(Astro.currentLocale);
@@ -11,6 +16,16 @@ const currentUrlPath = Astro.url.pathname.replace(/\/+$/, "");
 // Get url array from path
 // eg: /tags/tailwindcss => ['tags', 'tailwindcss']
 const breadcrumbList = currentUrlPath.split("/").slice(1);
+
+// Remove locale key at path beginning if exists
+// eg: ['ar', 'tags'] => ['tags']
+if (isValidLocaleKey(breadcrumbList[0])) {
+  breadcrumbList.splice(0, 1);
+}
+
+// the urls aren't localized yet
+// so we need to keep a separate array of urls in english
+const breadcrumbListUrls = [...breadcrumbList];
 
 if (breadcrumbList[0] !== "posts")
   breadcrumbList[0] = t(breadcrumbList[0] as keyof I18nStrings);
@@ -43,7 +58,7 @@ if (breadcrumbList[0] === "tags") {
 <nav class="breadcrumb" aria-label={t("a11y.breadcrumb")}>
   <ul>
     <li>
-      <a href="/">{t("home")}</a>
+      <a href={getRelativeLocalePath(Astro.currentLocale, "/")}>{t("home")}</a>
       <span aria-hidden="true">&raquo;</span>
     </li>
     {
@@ -59,8 +74,16 @@ if (breadcrumbList[0] === "tags") {
             </span>
           </li>
         ) : (
+          // This case happens only in tags section
           <li>
-            <a href={`/${breadcrumb}/`}>{breadcrumb}</a>
+            <a
+              href={getRelativeLocalePath(
+                Astro.currentLocale,
+                `/${breadcrumbListUrls[index]}/`
+              )}
+            >
+              {breadcrumb}
+            </a>
             <span aria-hidden="true">&raquo;</span>
           </li>
         )
