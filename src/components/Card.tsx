@@ -1,6 +1,7 @@
 import { slugifyStr } from "@utils/slugify";
 import Datetime from "./Datetime";
 import type { CollectionEntry } from "astro:content";
+import { getRelativeLocalePath } from "@i18n/utils";
 
 export interface Props {
   href?: string;
@@ -25,7 +26,7 @@ export default function Card({
   return (
     <li className="my-6">
       <a
-        href={href}
+        href={getRelativeLocalePath(currentLocale, href)}
         className="inline-block text-lg font-medium text-skin-accent decoration-dashed underline-offset-4 focus-visible:no-underline focus-visible:underline-offset-0"
       >
         {secHeading ? (

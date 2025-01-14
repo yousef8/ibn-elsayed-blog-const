@@ -2,7 +2,7 @@
 import { LOGO_IMAGE, SITE } from "@config";
 import Hr from "./Hr.astro";
 import LinkButton from "./LinkButton.astro";
-import { translateFor } from "@i18n/utils";
+import { translateFor, getRelativeLocalePath } from "@i18n/utils";
 
 export interface Props {
   activeNav?: "posts" | "archives" | "tags" | "about" | "search";
@@ -17,7 +17,10 @@ const { activeNav } = Astro.props;
   <a id="skip-to-content" href="#main-content">{t("a11y.skipToContent")}</a>
   <div class="nav-container">
     <div class="top-nav-wrap">
-      <a href="/" class="logo whitespace-nowrap">
+      <a
+        href={getRelativeLocalePath(Astro.currentLocale, "/")}
+        class="logo whitespace-nowrap"
+      >
         {
           LOGO_IMAGE.enable ? (
             <img
@@ -61,17 +64,26 @@ const { activeNav } = Astro.props;
         </button>
         <ul id="menu-items" class="display-none sm:flex">
           <li>
-            <a href="/posts/" class={activeNav === "posts" ? "active" : ""}>
+            <a
+              href={getRelativeLocalePath(Astro.currentLocale, "/posts/")}
+              class={activeNav === "posts" ? "active" : ""}
+            >
               {t("posts")}
             </a>
           </li>
           <li>
-            <a href="/tags/" class={activeNav === "tags" ? "active" : ""}>
+            <a
+              href={getRelativeLocalePath(Astro.currentLocale, "/tags/")}
+              class={activeNav === "tags" ? "active" : ""}
+            >
               {t("tags")}
             </a>
           </li>
           <li>
-            <a href="/about/" class={activeNav === "about" ? "active" : ""}>
+            <a
+              href={getRelativeLocalePath(Astro.currentLocale, "/about/")}
+              class={activeNav === "about" ? "active" : ""}
+            >
               {t("about")}
             </a>
           </li>
