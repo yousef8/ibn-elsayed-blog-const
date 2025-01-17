@@ -5,7 +5,7 @@ import {
   DEFAULT_LOCALE,
   localeToProfile,
   SUPPORTED_LOCALES,
-} from "./locales";
+} from "./config";
 import type { I18nKeys } from "./types";
 
 export function translateFor(locale: string | undefined) {

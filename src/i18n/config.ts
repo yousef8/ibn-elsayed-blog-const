@@ -1,6 +1,6 @@
-import type { I18nStrings } from "../types";
-import { ARLocale } from "./ar";
-import ENLocale from "./en";
+import type { I18nStrings } from "./types";
+import { ARLocale } from "./locales/ar";
+import ENLocale from "./locales/en";
 
 export type LocaleProfile = {
   messages: I18nStrings;
