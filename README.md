@@ -1,6 +1,10 @@
 # AstroPaper with I18n
 
+🌍 [اقرأنى بالعربية](README.ar.md)
+
 - This repository is a fork of the [AstroPaper](https://github.com/satnaing/astro-paper) theme, enhanced to support internationalization (i18n).
+
+- Builds upon the original AstroPaper theme to integrate i18n functionality.
 
 - I18n integration is implemented using [Astorjs i18n routing](https://docs.astro.build/en/guides/internationalization/)
 
