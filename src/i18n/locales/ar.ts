@@ -4,7 +4,7 @@ const baseStrings = {
   "site.title": "ابن السيد",
 };
 
-export const ARLocale: I18nStrings = {
+const ARLocale: I18nStrings = {
   ...baseStrings,
   about: "عنى",
   socialLinks: "تابعنى على",
@@ -86,3 +86,5 @@ export const ARLocale: I18nStrings = {
   "a11y.pagination": "ترقيم الصفحات",
   "a11y.breadcrumb": "اثار الطريق",
 };
+
+export default ARLocale;

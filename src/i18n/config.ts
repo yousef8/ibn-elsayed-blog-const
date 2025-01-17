@@ -1,5 +1,5 @@
 import type { I18nStrings } from "./types";
-import { ARLocale } from "./locales/ar";
+import ARLocale from "./locales/ar";
 import ENLocale from "./locales/en";
 
 export type LocaleProfile = {
