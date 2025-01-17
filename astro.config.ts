@@ -9,7 +9,7 @@ import {
   DEFAULT_LOCALE,
   LOCALES_TO_LANG,
   SUPPORTED_LOCALES,
-} from "./src/i18n/locales/";
+} from "./src/i18n/config";
 
 // https://astro.build/config
 export default defineConfig({
