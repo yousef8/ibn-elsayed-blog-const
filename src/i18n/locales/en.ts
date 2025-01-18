@@ -27,6 +27,7 @@ const ENLocale: I18nStrings = {
   "search.placeholder": "Search for anything",
   pages: "Pages",
   page: "Page",
+  pageWithNo: "Page {no}",
   "navigation.goBack": "Go back",
   "navigation.goBackHome": "Go Back Home",
   "navigation.backToTop": "Back to Top",
