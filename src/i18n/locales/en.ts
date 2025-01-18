@@ -85,6 +85,7 @@ const ENLocale: I18nStrings = {
   "a11y.themeButtonDefaultLabel": "auto",
   "a11y.pagination": "Pagination",
   "a11y.breadcrumb": "breadcrumb",
+  "a11y.languagePicker": "Language Picker",
 };
 
 export default ENLocale;

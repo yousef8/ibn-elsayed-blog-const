@@ -3,8 +3,9 @@ import ARLocale from "./locales/ar";
 import ENLocale from "./locales/en";
 
 export type LocaleProfile = {
+  name: string;
   messages: I18nStrings;
-  langTag: string; // Extremly important used in localizing dates, numbers and sitemap,  only English alphabet and hyphen allowed
+  langTag: string;
   direction: "rtl" | "ltr" | "auto";
   default?: boolean;
 };
@@ -12,12 +13,18 @@ export type LocaleProfile = {
 export type SupportedLocales = Array<keyof typeof localeToProfile>;
 
 export const localeToProfile = {
-  ar: { messages: ARLocale, langTag: "ar-EG", direction: "rtl" },
   en: {
+    name: "English", // Name presented in language picker
     messages: ENLocale,
-    langTag: "en-US",
+    langTag: "en-US", // Extremly important used in localizing dates, numbers and sitemap,  only English alphabet and hyphen allowed
     direction: "ltr",
     default: true,
+  },
+  ar: {
+    name: "العربية",
+    messages: ARLocale,
+    langTag: "ar-EG",
+    direction: "rtl",
   },
 } satisfies Record<string, LocaleProfile>;
 

@@ -35,6 +35,7 @@ This project includes all the features of the original [AstroPaper](https://gith
   - [ ] RSS Feeds with i18n support ([`@astrojs/rss`](https://docs.astro.build/en/guides/rss/)).
     - Currently, subscribing to RSS applies to all languages.
   - [ ] Route translations.
+  - [ ] Make language picker persistent
 
 ### 🧪 Testing (📋 Planned)
 
