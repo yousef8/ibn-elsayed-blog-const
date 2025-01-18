@@ -27,6 +27,7 @@ const ARLocale: I18nStrings = {
   "search.placeholder": "ابحث عن ما تريد",
   pages: "الصفحات",
   page: "الصفحة",
+  pageWithNo: "صفحة رقم {no}",
   "navigation.goBack": "اذهب للخلف",
   "navigation.goBackHome": "اذهب للصفحة الرئيسية",
   "navigation.backToTop": "للأعلى",

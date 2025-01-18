@@ -42,7 +42,7 @@ breadcrumbList[0] === "posts" &&
   breadcrumbList.splice(
     0,
     2,
-    `${t("posts")} (${t("page")} ${parseInt(breadcrumbList[1] || "1").toLocaleString(LOCALE.langTag)})`
+    `${t("posts")} (${t("pageWithNo", { no: parseInt(breadcrumbList[1] || "1").toLocaleString(LOCALE.langTag) })})`
   );
 
 // if breadcrumb is Home > Tags > [tag] > [page] <etc>
@@ -55,7 +55,7 @@ if (breadcrumbList[0] === "tags") {
       `${breadcrumbList[1]} ${
         Number(breadcrumbList[2]) === 1
           ? ""
-          : `(${t("page")} ` + breadcrumbList[2] + ")"
+          : `(${t("pageWithNo", { no: breadcrumbList[2] })})`
       }`
     );
 }

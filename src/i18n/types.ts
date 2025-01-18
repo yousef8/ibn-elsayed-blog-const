@@ -21,6 +21,7 @@ export interface I18nStrings {
   "search.placeholder": string;
   pages: string;
   page: string;
+  pageWithNo: string;
   "navigation.goBack": string;
   "navigation.goBackHome": string;
   "navigation.backToTop": string;
