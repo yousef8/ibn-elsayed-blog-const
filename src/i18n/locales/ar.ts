@@ -1,7 +1,7 @@
 import type { I18nStrings } from "@i18n/types";
 
 const baseStrings = {
-  "site.title": "ابن السيد",
+  "site.title": "استرو بيبر",
 };
 
 const ARLocale: I18nStrings = {
