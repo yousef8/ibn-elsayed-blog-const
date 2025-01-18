@@ -79,6 +79,7 @@ export interface I18nStrings {
   "a11y.themeButtonDefaultLabel": string;
   "a11y.pagination": string;
   "a11y.breadcrumb": string;
+  "a11y.languagePicker": string;
 }
 
 export type I18nKeys = keyof I18nStrings;
