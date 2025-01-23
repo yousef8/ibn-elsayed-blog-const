@@ -1,4 +1,15 @@
 ---
+import type { I18nStrings } from "@i18n/types";
+import {
+  getLocaleInfo,
+  getRelativeLocalePath,
+  translateFor,
+  isValidLocaleKey,
+} from "@i18n/utils";
+
+const t = translateFor(Astro.currentLocale);
+const LOCALE = getLocaleInfo(Astro.currentLocale);
+
 // Remove current url path and remove trailing slash if exists
 const currentUrlPath = Astro.url.pathname.replace(/\/+$/, "");
 
@@ -6,28 +17,48 @@ const currentUrlPath = Astro.url.pathname.replace(/\/+$/, "");
 // eg: /tags/tailwindcss => ['tags', 'tailwindcss']
 const breadcrumbList = currentUrlPath.split("/").slice(1);
 
+// Remove locale key at path beginning if exists
+// eg: ['ar', 'tags'] => ['tags']
+if (isValidLocaleKey(breadcrumbList[0])) {
+  breadcrumbList.splice(0, 1);
+}
+
+// the urls aren't localized yet
+// so we need to keep a separate array of urls in english
+const breadcrumbListUrls = [...breadcrumbList];
+
+if (breadcrumbList[0] !== "posts")
+  breadcrumbList[0] = t(breadcrumbList[0] as keyof I18nStrings);
+
 // if breadcrumb is Home > Posts > 1 <etc>
 // replace Posts with Posts (page number)
 breadcrumbList[0] === "posts" &&
-  breadcrumbList.splice(0, 2, `Posts (page ${breadcrumbList[1] || 1})`);
+  breadcrumbList.splice(
+    0,
+    2,
+    `${t("posts")} (${t("pageWithNo", { no: parseInt(breadcrumbList[1] || "1").toLocaleString(LOCALE.langTag) })})`
+  );
 
 // if breadcrumb is Home > Tags > [tag] > [page] <etc>
 // replace [tag] > [page] with [tag] (page number)
-breadcrumbList[0] === "tags" &&
+if (breadcrumbList[0] === "tags") {
   !isNaN(Number(breadcrumbList[2])) &&
-  breadcrumbList.splice(
-    1,
-    3,
-    `${breadcrumbList[1]} ${
-      Number(breadcrumbList[2]) === 1 ? "" : "(page " + breadcrumbList[2] + ")"
-    }`
-  );
+    breadcrumbList.splice(
+      1,
+      3,
+      `${breadcrumbList[1]} ${
+        Number(breadcrumbList[2]) === 1
+          ? ""
+          : `(${t("pageWithNo", { no: breadcrumbList[2] })})`
+      }`
+    );
+}
 ---
 
-<nav class="breadcrumb" aria-label="breadcrumb">
+<nav class="breadcrumb" aria-label={t("a11y.breadcrumb")}>
   <ul>
     <li>
-      <a href="/">Home</a>
+      <a href={getRelativeLocalePath(Astro.currentLocale, "/")}>{t("home")}</a>
       <span aria-hidden="true">&raquo;</span>
     </li>
     {
@@ -43,8 +74,16 @@ breadcrumbList[0] === "tags" &&
             </span>
           </li>
         ) : (
+          // This case happens only in tags section
           <li>
-            <a href={`/${breadcrumb}/`}>{breadcrumb}</a>
+            <a
+              href={getRelativeLocalePath(
+                Astro.currentLocale,
+                `/${breadcrumbListUrls[index]}/`
+              )}
+            >
+              {breadcrumb}
+            </a>
             <span aria-hidden="true">&raquo;</span>
           </li>
         )

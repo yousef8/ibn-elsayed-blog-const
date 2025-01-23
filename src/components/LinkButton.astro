@@ -1,4 +1,6 @@
 ---
+import { getRelativeLocalePath } from "@i18n/utils";
+
 export interface Props {
   href: string;
   className?: string;
@@ -7,13 +9,15 @@ export interface Props {
   disabled?: boolean;
 }
 
-const {
-  href,
-  className = "",
-  ariaLabel,
-  title,
-  disabled = false,
-} = Astro.props;
+function isExternalLink(url: string) {
+  return URL.canParse(url);
+}
+
+let { href, className = "", ariaLabel, title, disabled = false } = Astro.props;
+
+if (!isExternalLink(href)) {
+  href = getRelativeLocalePath(Astro.currentLocale, href);
+}
 ---
 
 {

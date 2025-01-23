@@ -7,12 +7,13 @@ import Datetime from "@components/Datetime";
 import type { CollectionEntry } from "astro:content";
 import { slugifyStr } from "@utils/slugify";
 import ShareLinks from "@components/ShareLinks.astro";
-import { SITE } from "@config";
+import { translateFor } from "@i18n/utils";
 
 export interface Props {
   post: CollectionEntry<"blog">;
   posts: CollectionEntry<"blog">[];
 }
+const t = translateFor(Astro.currentLocale);
 
 const { post, posts } = Astro.props;
 
@@ -37,7 +38,7 @@ const ogUrl = new URL(
 ).href;
 
 const layoutProps = {
-  title: `${title} | ${SITE.title}`,
+  title: `${title} | ${t("site.title")}`,
   author,
   description,
   pubDatetime,
@@ -73,7 +74,7 @@ const nextPost =
         ><path
           d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"
         ></path>
-      </svg><span>Go back</span>
+      </svg><span>{t("navigation.goBack")}</span>
     </button>
   </div>
   <main id="main-content">
@@ -87,6 +88,7 @@ const nextPost =
       className="my-2"
       editPost={editPost}
       postId={post.id}
+      currentLocale={Astro.currentLocale}
     />
     <article id="article" class="prose mx-auto mt-8 max-w-3xl">
       <Content />
@@ -108,7 +110,7 @@ const nextPost =
             d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"
           ></path>
         </svg>
-        <span>Back to Top</span>
+        <span>{t("navigation.backToTop")}</span>
       </button>
 
       <ShareLinks />
@@ -142,7 +144,7 @@ const nextPost =
               </>
             </svg>
             <div>
-              <span>Previous Post</span>
+              <span>{t("navigation.prevPost")}</span>
               <div class="text-sm text-skin-accent/85">{prevPost.title}</div>
             </div>
           </a>
@@ -155,7 +157,7 @@ const nextPost =
             class="flex w-full justify-end gap-1 text-right hover:opacity-75 sm:col-start-2"
           >
             <div>
-              <span>Next Post</span>
+              <span>{t("navigation.nextPost")}</span>
               <div class="text-sm text-skin-accent/85">{nextPost.title}</div>
             </div>
             <svg
@@ -189,6 +191,10 @@ const nextPost =
   }
   .post-title {
     @apply text-2xl font-semibold text-skin-accent;
+  }
+  article :global(pre) {
+    direction: ltr;
+    text-align: left;
   }
 </style>
 

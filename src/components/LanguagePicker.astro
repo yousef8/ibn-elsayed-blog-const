@@ -1,0 +1,84 @@
+---
+import { SUPPORTED_LOCALES, DEFAULT_LOCALE } from "@i18n/config";
+import { isValidLocaleKey, translateFor } from "@i18n/utils";
+
+const t = translateFor(Astro.currentLocale);
+
+const currentPathAsList = Astro.url.pathname.split("/").splice(1);
+
+const unLocalizedPathname = `/${
+  isValidLocaleKey(currentPathAsList[0])
+    ? currentPathAsList.slice(1).join("/")
+    : currentPathAsList.join("/")
+}`;
+---
+
+<div class="relative">
+  <button
+    id="language-picker-btn"
+    class="group w-auto items-center justify-center px-4 py-3 sm:my-0 sm:px-2 sm:py-1"
+    aria-label={t("a11y.languagePicker")}
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="icon icon-tabler icons-tabler-outline text-skin-base group-hover:text-skin-accent"
+    >
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+      <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0"></path>
+      <path d="M3.6 9h16.8"></path>
+      <path d="M3.6 15h16.8"></path>
+      <path d="M11.5 3a17 17 0 0 0 0 18"></path>
+      <path d="M12.5 3a17 17 0 0 1 0 18"></path>
+    </svg>
+    <span class="ms-1 group-hover:text-skin-accent"
+      >{(Astro.currentLocale || "-").toUpperCase()}</span
+    >
+  </button>
+  <div
+    id="language-picker-items"
+    class="absolute top-full hidden w-full rounded-md bg-skin-fill shadow-lg ring-1 ring-black ring-opacity-5"
+    role="menu"
+    aria-orientation="vertical"
+  >
+    {
+      SUPPORTED_LOCALES.map(locale => (
+        <a
+          href={`${locale === DEFAULT_LOCALE ? "" : "/" + locale}${unLocalizedPathname}`}
+          class="block px-4 py-2 text-sm hover:bg-skin-card hover:text-skin-accent"
+          role="menuitem"
+        >
+          {locale.toUpperCase()}
+        </a>
+      ))
+    }
+  </div>
+</div>
+
+<script>
+  function toggleLanguagePicker() {
+    const langBtn = document.querySelector("#language-picker-btn");
+    const langItems = document.querySelector("#language-picker-items");
+
+    langBtn?.addEventListener("click", e => {
+      e.stopPropagation();
+      langItems?.classList.toggle("hidden");
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener("click", () => {
+      langItems?.classList.add("hidden");
+    });
+  }
+
+  toggleLanguagePicker();
+  // Add this to the existing astro:after-swap listener
+  document.addEventListener("astro:after-swap", toggleLanguagePicker);
+</script>
