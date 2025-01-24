@@ -23,7 +23,7 @@ const {
   author = SITE.author,
   profile = SITE.profile,
   description = SITE.desc,
-  ogImage = SITE.ogImage,
+  ogImage = SITE.ogImage && getRelativePath(SITE.ogImage),
   canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
   pubDatetime,
   modDatetime,
@@ -32,7 +32,7 @@ const {
 
 const socialImageURL = new URL(
   ogImage ??
-    (SITE.ogImage ? getRelativePath(SITE.ogImage) : undefined) ??
+    (SITE.ogImage && getRelativePath(SITE.ogImage)) ??
     getRelativePath("og.png"),
   Astro.url.origin
 ).href;

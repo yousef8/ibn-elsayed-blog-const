@@ -9,6 +9,8 @@ export interface Props {
   disabled?: boolean;
 }
 
+const isExternalPath = (path: string) => URL.canParse(path);
+
 const {
   href,
   className = "",
@@ -29,7 +31,7 @@ const {
     </span>
   ) : (
     <a
-      href={getRelativePath(href)}
+      href={isExternalPath(href) ? href : getRelativePath(href)}
       class:list={["group inline-block hover:text-skin-accent", className]}
       aria-label={ariaLabel}
       title={title}
