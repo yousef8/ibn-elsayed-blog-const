@@ -15,9 +15,13 @@ export interface Props {
 const t = translateFor(Astro.currentLocale);
 
 const { frontmatter } = Astro.props;
+
+const siteTitle = t("site.title");
+const pageTitle = t("about");
+const title = `${pageTitle.charAt(0).toUpperCase() + pageTitle.slice(1)} | ${siteTitle}`;
 ---
 
-<Layout title={`${frontmatter.title} | ${t("site.title")}`}>
+<Layout title={title}>
   <Header activeNav="about" />
   <Breadcrumbs />
   <main id="main-content">
