@@ -13,18 +13,18 @@ export type LocaleProfile = {
 export type SupportedLocales = Array<keyof typeof localeToProfile>;
 
 export const localeToProfile = {
+  ar: {
+    name: "العربية", // Name presented in language picker
+    messages: ARLocale, // Locale translations
+    langTag: "ar-EG", // Extremly important used in localizing dates, numbers and sitemap,  only English alphabet and hyphen allowed
+    direction: "rtl", // UI layout direction
+  },
   en: {
-    name: "English", // Name presented in language picker
+    name: "English",
     messages: ENLocale,
-    langTag: "en-US", // Extremly important used in localizing dates, numbers and sitemap,  only English alphabet and hyphen allowed
+    langTag: "en-US",
     direction: "ltr",
     default: true,
-  },
-  ar: {
-    name: "العربية",
-    messages: ARLocale,
-    langTag: "ar-EG",
-    direction: "rtl",
   },
 } satisfies Record<string, LocaleProfile>;
 
