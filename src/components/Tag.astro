@@ -1,5 +1,4 @@
 ---
-import getRelativePath from "@utils/getRelativePath";
 import { getRelativeLocalePath } from "@i18n/utils";
 
 export interface Props {
@@ -16,9 +15,7 @@ const { tag, size = "sm" } = Astro.props;
   }`}
 >
   <a
-    href={getRelativePath(
-      getRelativeLocalePath(Astro.currentLocale, `/tags/${tag}/`)
-    )}
+    href={getRelativeLocalePath(Astro.currentLocale, `/tags/${tag}/`)}
     transition:name={tag}
     class={`${size === "sm" ? "text-sm" : "text-lg"} pe-2 group`}
   >

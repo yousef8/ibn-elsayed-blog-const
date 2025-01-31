@@ -1,6 +1,5 @@
 ---
 import type { I18nStrings } from "@i18n/types";
-import getRelativePath from "@utils/getRelativePath";
 import {
   getLocaleInfo,
   getRelativeLocalePath,
@@ -64,9 +63,7 @@ if (breadcrumbList[0] === "tags") {
 <nav class="breadcrumb" aria-label={t("a11y.breadcrumb")}>
   <ul>
     <li>
-      <a href={getRelativePath(getRelativeLocalePath(Astro.currentLocale, "/"))}
-        >{t("home")}</a
-      >
+      <a href={getRelativeLocalePath(Astro.currentLocale, "/")}>{t("home")}</a>
       <span aria-hidden="true">&raquo;</span>
     </li>
     {
@@ -85,11 +82,9 @@ if (breadcrumbList[0] === "tags") {
           // This case happens only in tags section
           <li>
             <a
-              href={getRelativePath(
-                getRelativeLocalePath(
-                  Astro.currentLocale,
-                  `/${breadcrumbListUrls[index]}/`
-                )
+              href={getRelativeLocalePath(
+                Astro.currentLocale,
+                `/${breadcrumbListUrls[index]}/`
               )}
             >
               {breadcrumb}

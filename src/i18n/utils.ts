@@ -47,11 +47,14 @@ export function getRelativeLocalePath(
   path?: string,
   options?: GetLocaleOptions
 ): string {
-  if (path && isPathLocalized(path)) {
-    return path;
+  if (!locale) {
+    throw new Error("locale key is undefined");
   }
 
-  if (!locale || !isLocaleKey(locale)) locale = DEFAULT_LOCALE;
+  if (!isLocaleKey(locale))
+    throw new Error(
+      `'${locale}' locale is not supported, add it to i18n/config or choose a supported locale`
+    );
 
   return getRelativeLocaleUrl(locale, path, options);
 }

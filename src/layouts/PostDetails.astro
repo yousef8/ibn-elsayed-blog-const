@@ -7,8 +7,7 @@ import Datetime from "@components/Datetime";
 import type { CollectionEntry } from "astro:content";
 import { slugifyStr } from "@utils/slugify";
 import ShareLinks from "@components/ShareLinks.astro";
-import { translateFor } from "@i18n/utils";
-import getRelativePath from "@utils/getRelativePath";
+import { getRelativeLocalePath, translateFor } from "@i18n/utils";
 
 export interface Props {
   post: CollectionEntry<"blog">;
@@ -34,7 +33,11 @@ const { Content } = await post.render();
 
 const ogImageUrl = typeof ogImage === "string" ? ogImage : ogImage?.src;
 const ogUrl = new URL(
-  ogImageUrl ?? getRelativePath(`/posts/${slugifyStr(title)}.png`),
+  ogImageUrl ??
+    getRelativeLocalePath(
+      Astro.currentLocale,
+      `/posts/${slugifyStr(title)}.png`
+    ),
   Astro.url.origin
 ).href;
 
@@ -69,7 +72,7 @@ const nextPost =
   <div class="mx-auto flex w-full max-w-3xl justify-start px-2">
     <button
       class="focus-outline mb-2 mt-8 flex hover:opacity-75"
-      onclick={`(() => (history.length === 1) ? window.location = '${getRelativePath("/")}' : history.back())()`}
+      onclick={`(() => (history.length === 1) ? window.location = '${getRelativeLocalePath(Astro.currentLocale, "/")}' : history.back())()`}
     >
       <svg xmlns="http://www.w3.org/2000/svg" class="rtl:rotate-180"
         ><path
@@ -124,7 +127,10 @@ const nextPost =
       {
         prevPost && (
           <a
-            href={getRelativePath(`/posts/${prevPost.slug}`)}
+            href={getRelativeLocalePath(
+              Astro.currentLocale,
+              `/posts/${prevPost.slug}`
+            )}
             class="flex w-full gap-1 hover:opacity-75"
           >
             <svg
@@ -154,7 +160,10 @@ const nextPost =
       {
         nextPost && (
           <a
-            href={getRelativePath(`/posts/${nextPost.slug}`)}
+            href={getRelativeLocalePath(
+              Astro.currentLocale,
+              `/posts/${nextPost.slug}`
+            )}
             class="flex w-full justify-end gap-1 text-right hover:opacity-75 sm:col-start-2"
           >
             <div>

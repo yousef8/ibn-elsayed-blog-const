@@ -20,7 +20,7 @@ const { activeNav } = Astro.props;
   <div class="nav-container">
     <div class="top-nav-wrap">
       <a
-        href={getRelativePath(getRelativeLocalePath(Astro.currentLocale, "/"))}
+        href={getRelativeLocalePath(Astro.currentLocale, "/")}
         class="logo whitespace-nowrap"
       >
         {
@@ -69,9 +69,7 @@ const { activeNav } = Astro.props;
         <ul id="menu-items" class="display-none sm:flex">
           <li>
             <a
-              href={getRelativePath(
-                getRelativeLocalePath(Astro.currentLocale, "/posts/")
-              )}
+              href={getRelativeLocalePath(Astro.currentLocale, "/posts/")}
               class={activeNav === "posts" ? "active" : ""}
             >
               {t("posts")}
@@ -79,9 +77,7 @@ const { activeNav } = Astro.props;
           </li>
           <li>
             <a
-              href={getRelativePath(
-                getRelativeLocalePath(Astro.currentLocale, "/tags/")
-              )}
+              href={getRelativeLocalePath(Astro.currentLocale, "/tags/")}
               class={activeNav === "tags" ? "active" : ""}
             >
               {t("tags")}
@@ -89,9 +85,7 @@ const { activeNav } = Astro.props;
           </li>
           <li>
             <a
-              href={getRelativePath(
-                getRelativeLocalePath(Astro.currentLocale, "/about/")
-              )}
+              href={getRelativeLocalePath(Astro.currentLocale, "/about/")}
               class={activeNav === "about" ? "active" : ""}
             >
               {t("about")}
