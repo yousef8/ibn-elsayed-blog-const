@@ -47,14 +47,39 @@ export function getRelativeLocalePath(
   path?: string,
   options?: GetLocaleOptions
 ): string {
+  const localeKey = resolveLocale(locale);
+
+  return getRelativeLocaleUrl(localeKey, path, options);
+}
+
+function resolveLocale(locale: string | undefined): SupportedLocales[number] {
   if (!locale) {
     throw new Error("locale key is undefined");
   }
 
-  if (!isLocaleKey(locale))
+  if (!isLocaleKey(locale)) {
     throw new Error(
       `'${locale}' locale is not supported, add it to i18n/config or choose a supported locale`
     );
+  }
 
-  return getRelativeLocaleUrl(locale, path, options);
+  return locale;
+}
+
+export function stripBaseAndLocale(locale: string | undefined, path: string) {
+  const localeKey = resolveLocale(locale);
+
+  const prefix = buildPrefix(localeKey);
+
+  return path.slice(prefix.length);
+}
+
+function buildPrefix(locale: SupportedLocales[number]) {
+  const baseUrl = import.meta.env.BASE_URL;
+
+  return (
+    baseUrl +
+    (baseUrl.endsWith("/") ? "" : "/") +
+    (locale === DEFAULT_LOCALE ? "" : locale)
+  );
 }
