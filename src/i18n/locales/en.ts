@@ -34,6 +34,7 @@ const ENLocale: I18nStrings = {
   "navigation.nextPost": "Next Post",
   "navigation.prevPost": "Previous Post",
   pageNotFound: "Page Not Found",
+  notFound: "Not Found",
   rssFeed: "RSS Feed",
   suggestChanges: "Suggest Changes",
   toggleLightAndDark: "Toggles light & dark",

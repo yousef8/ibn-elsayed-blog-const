@@ -34,6 +34,7 @@ const ARLocale: I18nStrings = {
   "navigation.nextPost": "المقالة التالية",
   "navigation.prevPost": "المقالة السابقة",
   pageNotFound: "هذه الصفحة غير موجودة",
+  notFound: "غير موجود",
   rssFeed: "تغذية  بواسطة RSS",
   suggestChanges: "اقترح تعديل",
   toggleLightAndDark: "بدل بين الصبح و الليل",

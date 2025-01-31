@@ -28,6 +28,7 @@ export interface I18nStrings {
   "navigation.nextPost": string;
   "navigation.prevPost": string;
   pageNotFound: string;
+  notFound: string;
   rssFeed: string;
   suggestChanges: string;
   toggleLightAndDark: string;
