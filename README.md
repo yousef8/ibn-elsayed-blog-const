@@ -21,6 +21,7 @@
   - [i18n Features](#i18n-features)
   - [🧪 Testing (📋 Planned)](#-testing--planned)
 - [📖 How To Use](#-how-to-use)
+  - [🔧 Site Configurations](#-site-configurations)
   - [🌐 Locale Configurations](#-locale-configurations)
     - [Locale key (e.g. `ar`, `en`)](#locale-key-eg-ar-en)
     - [Locale Profile (locale key value)](#locale-profile-locale-key-value)
@@ -64,6 +65,20 @@ This project includes all the features of the original [AstroPaper](https://gith
 The same way to [use and configure AstroTheme](https://github.com/satnaing/astro-paper?tab=readme-ov-file#-project-structure), but with some changes related to localization.
 
 Below are the steps to configure and use the localization features.
+
+### 🔧 Site Configurations
+
+`SITE.title` configuration has been replaced with `site.title` translation, which is now used across most of the site.
+
+Only exception is OG image generation, which still uses `SITE.title`. This will soon be updated to use the `site.title` translation (work in progress).
+
+```ts
+export const SITE: Site = {
+  //...
+  title: "AstroPaper I18n",
+  //...
+};
+```
 
 ### 🌐 Locale Configurations
 
