@@ -1,7 +1,7 @@
 import type { I18nStrings } from "@i18n/types";
 
 const baseStrings = {
-  "site.title": "AstroPaper",
+  "site.title": "AstroPaper I18n",
 };
 
 const ENLocale: I18nStrings = {
