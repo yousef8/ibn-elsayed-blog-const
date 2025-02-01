@@ -175,7 +175,7 @@ export async function GET() {
   const posts = await getCollection("blog");
   const sortedPosts = getSortedPosts(posts);
   return rss({
-    title: SITE.title,
+    title: t("site.title"),
     description: SITE.desc,
     site: SITE.website,
     items: sortedPosts.map(({ data, slug }) => ({
