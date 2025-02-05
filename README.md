@@ -2,17 +2,17 @@
 
 🌍 [اقرأنى بالعربية](README.ar.md)
 
-- This repository is a fork of the [AstroPaper](https://github.com/satnaing/astro-paper) theme, enhanced to support internationalization (i18n).
+This repository is a fork of the [AstroPaper](https://github.com/satnaing/astro-paper) theme, enhanced to support internationalization (i18n).
 
-- Builds upon the original AstroPaper theme to integrate i18n functionality.
+The fork Builds upon the original AstroPaper theme to integrate i18n functionality.
 
-- I18n integration is implemented using [Astorjs i18n routing](https://docs.astro.build/en/guides/internationalization/)
+I18n integration is implemented using [Astorjs i18n routing](https://docs.astro.build/en/guides/internationalization/)
 
-- As I'm a native Arabic speaker, I made sure the i18n integration supports RTL languages (etc Arabic, Persian,...).
+As I'm a native Arabic speaker, I made sure the i18n integration supports RTL languages (etc Arabic, Persian,...).
 
-- If god wills, the branch will maintain synchronization with the original [AstroPaper](https://github.com/satnaing/astro-paper) theme.
+If god wills, this fork will maintain synchronization with the original [AstroPaper](https://github.com/satnaing/astro-paper) theme.
 
-- Does not modify the original theme’s UI; it solely adds i18n support.
+This Fork does not modify the original theme’s UI; it solely adds i18n support.
 
 ## Table Of Contents
 
@@ -51,6 +51,7 @@ This project includes all the features of the original [AstroPaper](https://gith
 - [ ] 📋 **Planned:**
   - [ ] RSS Feeds with i18n support ([`@astrojs/rss`](https://docs.astro.build/en/guides/rss/)).
     - Currently, subscribing to RSS will feed users by articles from all locales.
+  - [ ] OG image generation with i18n support
   - [ ] Route translations.
   - [ ] Make language picker persistent
 
@@ -62,9 +63,7 @@ This project includes all the features of the original [AstroPaper](https://gith
 
 ## 📖 How To Use
 
-The same way to [use and configure AstroTheme](https://github.com/satnaing/astro-paper?tab=readme-ov-file#-project-structure), but with some changes related to localization.
-
-Below are the steps to configure and use the localization features.
+The same way to [use and configure AstroTheme](https://github.com/satnaing/astro-paper?tab=readme-ov-file#-project-structure), but with some _major_ configuration changes.
 
 ### 🔧 Site Configurations
 
