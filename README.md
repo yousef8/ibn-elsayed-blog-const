@@ -2,6 +2,8 @@
 
 🌍 [اقرأنى بالعربية](README.ar.md)
 
+![AstroPaper I18n](/public/astro-paper-i18n.png)
+
 This repository is a fork of the [AstroPaper](https://github.com/satnaing/astro-paper) theme, enhanced to support internationalization (i18n).
 
 The fork Builds upon the original AstroPaper theme to integrate i18n functionality.

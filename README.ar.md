@@ -1,5 +1,9 @@
 # أستروبيبر مع دعم الترجمة
 
+🌍 [Readme in English](README.ar.md)
+
+![AstroPaper I18n](/public/astro-paper-i18n.png)
+
 <div dir="rtl">
 
 هذا المستودع متفرع من ثيمة [AstroPaper](https://github.com/satnaing/astro-paper) مع إضافة دعم للترجمة
