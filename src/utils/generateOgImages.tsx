@@ -10,8 +10,12 @@ function svgBufferToPngBuffer(svg: string) {
   return pngData.asPng();
 }
 
-export async function generateOgImageForPost(post: CollectionEntry<"blog">) {
-  const svg = await postOgImage(post);
+export async function generateOgImageForPost(
+  post: CollectionEntry<"blog">,
+  localeKey: SupportedLocales[number],
+  localeConfig: LocaleProfile
+) {
+  const svg = await postOgImage(post, localeKey, localeConfig);
   return svgBufferToPngBuffer(svg);
 }
 
